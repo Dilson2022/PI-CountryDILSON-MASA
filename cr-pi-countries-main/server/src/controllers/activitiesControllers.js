@@ -1,20 +1,14 @@
-const { createActivities } = require("../db");
+const { Activity} = require("../db");
 
-const createHandler = async (req, res) => {
-    try {
-        const { name, email, phone } = req.body;
-        const newActivities = await createActivities(name, email, phone);
-        res.status(201).json(newActivities);
-    } catch (error) {
-        res.status(400).json({ error: error.message });
-    }
-};
+const createActivity = async (Nombre, Dificultad, Duración, Temporada) =>
+    await Activity.create({Nombre, Dificultad, Duración, Temporada});
+    
 
 const activitiesHandlers = (req, res) => {
     res.send(`Estoy por crear un usuario con estos datos:`);
 };
 
 module.exports = {
-    createHandler,
+    createActivity,
     activitiesHandlers,
 };

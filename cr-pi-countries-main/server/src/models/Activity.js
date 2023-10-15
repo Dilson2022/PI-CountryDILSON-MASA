@@ -2,23 +2,27 @@ const { DataTypes } = require('sequelize');
 
 module.exports = (sequelize) => {
   const Activity = sequelize.define('Activity', {
-    name: {
+    ID: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      autoIncrement: true,
+      primaryKey: true
+    },
+    Nombre: {
       type: DataTypes.STRING,
       allowNull: false
     },
-    difficulty: {
-      type: DataTypes.ENUM("1", "2", "3", "4", "5"),
+    Dificultad: {
+      type: DataTypes.ENUM('baja', 'media', 'alta'),
       allowNull: false
     },
-    duration: {
+    Duración: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
-    season: {
-      type: DataTypes.ENUM('Summer', 'Autumn', 'Winter', 'Spring'),
+    Temporada: {
+      type: DataTypes.ENUM('Summer', 'Otoño', 'Invierno', 'Primavera'),
       allowNull: false
     }
   });
-
-  // No es necesario el return aquí si estás utilizando module.exports
 };

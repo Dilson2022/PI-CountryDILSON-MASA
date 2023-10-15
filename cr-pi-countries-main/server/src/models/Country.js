@@ -15,15 +15,15 @@ module.exports = (sequelize) => {
     },
     FlagImage: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true
     },
     Continente: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: false // Permite valores nulos para la columna "FlagImage"
     },
     Capital: {
       type: DataTypes.STRING,
-      allowNull: false
+      allowNull: true // permite valores nulos para la columna "capital"
     },
     Subregion: {
       type: DataTypes.STRING
@@ -35,5 +35,7 @@ module.exports = (sequelize) => {
       type: DataTypes.INTEGER,
       allowNull: false
     }
-  });
- }
+     }, {
+      timestamps: false // Esto desactiva la creación automática de createdAt y updatedAt
+    });
+  };

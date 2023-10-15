@@ -1,12 +1,18 @@
-const {createActivities} = require("../controllers/activitiesControllers")
+const {createActivity}  = require("../controllers/activitiesControllers")
 
-const createHandler = async (req, res) => {
-
+const createActivitiesHandler = async (req, res) => {
     try { 
-        const { name, email, phone } = req.body;
-        const newActivities = await createActivities(name,email,phone);
-        res.status(201).json(newActivities);
+        const { Nombre, Dificultad, Duración, Temporada} = req.body;
+        const newActivity = await createActivity({
+            Nombre, 
+            Dificultad, 
+            Duración, 
+            Temporada,
+        });
+
+        res.status(201).json(newActivity);
     } catch (error){
+
         res.status(400).json({ error: error. message});
     }
 };
@@ -22,6 +28,6 @@ const activitiesHandlers = (req, res) =>{
 
 
 module.exports = {
-    createHandler,
+    createActivitiesHandler,
     activitiesHandlers,
 }
