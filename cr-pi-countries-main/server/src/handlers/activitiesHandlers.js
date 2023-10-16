@@ -1,4 +1,5 @@
-const {createActivity}  = require("../controllers/activitiesControllers")
+const {createActivity, getActivities}  = require("../controllers/activitiesControllers")
+
 
 const createActivitiesHandler = async (req, res) => {
     try { 
@@ -21,13 +22,21 @@ const createActivitiesHandler = async (req, res) => {
 
 
 
-const activitiesHandlers = (req, res) =>{
-    
-    res.send(`Estoy por crear un usuario con estos datos:` )
-}
+const getActivitiesHandlers = async (req, res) =>{
+
+    try {
+        const activities = await getActivities(); // Llama al controlador
+        res.send(activities); // Envio de actividades como respuesta
+
+    } catch (error) {
+        console.error('Error al obtener actividades:', error);
+        res.status(500).send('Error al obtener actividades. Inténtalo de nuevo más tarde.')// Envío de mensaje de error al cliente
+    }
+
+ };
 
 
 module.exports = {
     createActivitiesHandler,
-    activitiesHandlers,
+    getActivitiesHandlers,
 }
