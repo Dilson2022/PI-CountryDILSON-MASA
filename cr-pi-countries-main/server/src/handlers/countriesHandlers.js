@@ -1,38 +1,44 @@
-const {getCountriesById, searchCountriesByName, getAllCountries} = require("../controllers/countriesControllers")
+const {  getAllCountries, getCountriesById, searchCountriesByName, } = require("../controllers/countriesControllers")
 
 
-const countriesHandlerName = (req, res) => {
-    res.send("request para obtener países por nombre");
-};
+
+ const getCountriesHandlerName = async (req, res) => {
+
+ }
     
 
-const countriesHandlers = async (req, res) => {
-    const { name } = req.query;
+ const getCountriesHandler = async (req, res) => {
+    try {
+      const countries = await getAllCountries();
+      res.status(200).json(countries);
+    } catch (error) {
+      res.status(404).json({ error: error.message });
+    }
+  };
 
-    const results = name ? await searchCountriesByName(name): await getAllCountries();
+    
+    
 
-    res.status(200).json(results);
-
+     const countriesHandlerByIdFun = async (req, res) => {
+        try {
+            const { idPais } = req.params;
+            const source = isNaN(idPais) ? "bdd" : "api";
+            const countries = await getCountriesById(idPais, source);
+    
+            if (!countries) {
+                return res.status(404).json({ error: "No se encontró ningún país con el ID proporcionado." });
+            }
+    
+            res.status(200).json(countries);
+        } catch (error) {
+            console.error("Error en la solicitud:", error);
+            res.status(500).json({ error: "Hubo un problema al procesar tu solicitud." });
+        }
     };
 
-    
-    
-
-const countriesHandlerByIdFun = async (req, res) => {
-    const {idPais} = req.params;
-    const source = isNaN(idPais) ? "bdd" : "api"; // si id no es un numero, busca en la base de datos, y si es un numero, busca en la api
-    try {
-        const countries = await getCountriesById(idPais, source)
-        res.status(200).json(countries);
-    }   catch (error) {
-        res.status(400).json({error:error.message})
-    }
-    
-};
-
 module.exports = {
-    countriesHandlerName,
-    countriesHandlers,
+    getCountriesHandlerName,
+    getCountriesHandler,
     countriesHandlerByIdFun,
     
 };

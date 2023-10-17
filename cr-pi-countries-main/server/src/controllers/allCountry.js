@@ -1,21 +1,26 @@
-const axios = require("axios")
+const axios = require("axios");
 
-const allCountry = axios.get('http://localhost:5000/countries')
-.then(result=> {
-    const filteredData = result.data.map((e) =>{
-        return {
-            ID: e.cca3,
-            Nombre: e.name.common,
-            FlagImage: e.flag,
-            Continente: e.continents,
-            Capital: e.capital,
-            Subregion: e.subregion,
-            Area: e.area,
-            Poblacion: e.population
-        };
+const allCountry = async () => {
+  try {
+    const result = await axios.get('http://localhost:5000/countries');
+    const filteredData = result.data.map((e) => {
+      return {
+        ID: e.cca3,
+        Nombre: e.name.common,
+        FlagImage: e.flag,
+        Continente: e.continents,
+        Capital: e.capital,
+        Subregion: e.subregion,
+        Area: e.area,
+        Poblacion: e.population
+      };
     });
     return filteredData;
-});
+  } catch (error) {
+    console.error('Error al obtener los países:', error);
+    throw error; // Propagar el error hacia arriba
+  }
+};
 
 module.exports = allCountry;
 
