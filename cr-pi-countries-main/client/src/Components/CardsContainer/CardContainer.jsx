@@ -4,9 +4,9 @@ import { useSelector } from "react-redux"
 
 const CardsContainer = () => {
     
-    //Hook que se utiliza para extrar datos del sotore de Redux, en un componente funcional de react
+    //Hook que se utiliza para extraer datos del sotore de Redux, en un componente funcional de react
     const countries = useSelector(state=>state.countries)
-
+    
 
     return(
         <div className={styles.Container}>
