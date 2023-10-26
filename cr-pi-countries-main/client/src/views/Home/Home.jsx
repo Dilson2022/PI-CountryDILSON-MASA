@@ -2,6 +2,7 @@ import CardsContainer from "../../Components/CardsContainer/CardContainer";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCountries } from "../../redux/actions";
+import CountryDetail from "../Detail/CountryDetail";
 
 
 const Home = () => {
@@ -27,6 +28,11 @@ const Home = () => {
 }
 
 export default Home;
+
+
+
+
+
 
 //CardContainer, mira al estado global
 

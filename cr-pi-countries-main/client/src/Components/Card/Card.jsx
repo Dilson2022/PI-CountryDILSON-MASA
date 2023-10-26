@@ -1,32 +1,45 @@
 import PropTypes from 'prop-types';
 import styles from "./Card.module.css";
+import { Link } from 'react-router-dom';
 
 
-// recibe props y muestra props
-const Card = (props) => { 
+
+
+
+
+// recibe props como  un objeto llamado data
+const Card = ( {data} ) => {
+    const {ID, Nombre, FlagImage, Continente } = data;
+
+
+    
     return (
         <div className={styles.card}>
-            <p>ID={props.ID}</p>
-            <p>Nombre={props.Nombre}</p>
-            <p>FlagImage={props.FlagImage}</p>
-            <p>Continente={props.Continente}</p>
-            <p>Capital={props.Capital}</p>
-            <p>Subregion={props.Subregion}</p>
-            <p>Area={props.Area}</p>
-            <p>Poblacion={props.Poblacion}</p>
+            <img className={styles.image} src={FlagImage} />
+            <p>Nombre: {Nombre }</p>
+            <p>Continente: {Continente }</p>
+          <Link to={`/detail/${ID}`}  >
+            <button className={styles.linkButton}> + detalle</button>
+          </Link>
+             
+           
+            
+            
         </div>
     );
 };
 
 Card.propTypes = {
-    ID: PropTypes.string.isRequired,
-    Nombre: PropTypes.string.isRequired,
-    FlagImage: PropTypes.string.isRequired,
-    Continente: PropTypes.string.isRequired,
-    Capital: PropTypes.string.isRequired,
-    Subregion: PropTypes.string.isRequired,
-    Area: PropTypes.number.isRequired,
-    Poblacion: PropTypes.number.isRequired
+    data: PropTypes.shape({
+        ID: PropTypes.string,
+        Nombre: PropTypes.string,
+        FlagImage: PropTypes.string,
+        Continente: PropTypes.string,
+        Capital: PropTypes.string,
+        Subregion: PropTypes.string,
+        Area: PropTypes.number,
+        Poblacion: PropTypes.number
+    }).isRequired
 };
 
 export default Card;

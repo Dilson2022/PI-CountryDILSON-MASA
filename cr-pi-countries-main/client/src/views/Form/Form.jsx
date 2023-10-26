@@ -1,63 +1,74 @@
+
+import styles from "./Form.module.css";
 import { useState } from "react";
 
-
-
 const Form = () => {
+  const [form, setForm] = useState({
+    Nombre: "",
+    Dificultad: "",
+    Duracion: "",
+    Temporada: "",
+    // Paises: []
+  });
 
-    const form = useState({
-        Nombre:"",
-        Continente:"",
-        
-    })
+  // const [erros,setErrors] = useState({
+  //   Nombre: "",
+  //   Dificultad: "",
+  //   Duracion: "",
+  //   Temporada: "",
+  // })
 
-    return (
-        <form> 
-            
-            <div>
-               <label>Nombre</label> 
-               <input type="texto"></input>
-            </div>
+  const changeHandler = (event) =>{
+   const property = event.target.name;
+   const value = event.target.value;
 
-            <div>
-               <label>FlagImage</label> 
-               <input type="texto"></input>
-            </div>
+   setForm({...form, [property]:value})
+  }
 
-            <div>
-               <label>Continente</label> 
-               <input type="texto"></input>
-            </div>
+ 
+  // const validate = (form) => {
+  //   console.log("que me trae");
 
-            <div>
-               <label>Capital</label> 
-               <input type="texto"></input>
-            </div>
+  // }
+  
+  return (
+    <form >
+      <div>
+        <label>Nombre</label>
+        <input type="text"  value={form.Nombre} onChange={changeHandler} name="Nombre"  />
+      </div>
 
-            <div>
-               <label>Subregion</label> 
-               <input type="texto"></input>
-            </div>
+      <div >
+        <label>Dificultad</label>
+        <input type="text"  value={form.Dificultad}onChange={changeHandler} name="Dificultad" />
+      </div>
 
-            <div>
-               <label>Area</label> 
-               <input type="texto"></input>
-            </div>
+      <div>
+        <label>Duración</label>
+        <input type="text" value={form.Duracion} onChange={changeHandler}  name="Duracion"/>
+      </div>
 
-            <div>
-               <label>Poblacion</label> 
-               <input type="texto"></input>
-            </div>
-        </form> 
-    )
-}
+      <div >
+        <label>Temporada</label>
+        <input type="text"  value={form.Temporada} onChange={changeHandler} name="Temporada"/>
+      </div>
+
+      <div className={styles.formGroup}>
+        <label>Paises</label>
+        <select multiple name="Paises" value={form.Paises}onChange={changeHandler}>
+          <option value="pais1">Pais 1</option>
+          <option value="pais2">Pais 2</option>
+          <option value="pais3">Pais 3</option>
+          {/* Agrega más opciones aquí según tus necesidades */}
+        </select>
+      </div>
+
+      <button type="submit">Crear actividad turística</button>
+    </form>
+  );
+};
 
 export default Form;
 
-// ID={country.ID}
-// Nombre={country.Nombre}
-// FlagImage={country.FlagImage}
-// Continente={country.Continente}
-// Capital={country.Capital}
-// Subregion={country.Subregion}
-// Area={country.Area}
-// Poblacion={country.Poblacion}
+
+

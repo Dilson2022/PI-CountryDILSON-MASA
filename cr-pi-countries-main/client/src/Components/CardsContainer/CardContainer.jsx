@@ -3,28 +3,28 @@ import styles from"./CardsContainer.module.css"
 import { useSelector } from "react-redux"
 
 const CardsContainer = () => {
-    
-    //Hook que se utiliza para extraer datos del sotore de Redux, en un componente funcional de react
-    const countries = useSelector(state=>state.countries)
-    
-
-    return(
-        <div className={styles.Container}>
-             {countries.map(country=>{
-                return <Card
-                key={country.ID} 
-                    ID={country.ID}
-                    Nombre={country.Nombre}
-                    FlagImage={country.FlagImage}
-                    Continente={country.Continente}
-                    Capital={country.Capital}
-                    Subregion={country.Subregion}
-                    Area={country.Area}
-                    Poblacion={country.Poblacion}
-                 />
-             })}
-        </div>
-    )
-}
+    const countries = useSelector(state => state.countries);
+  
+    return (
+      <div className={styles.Container}>
+        {countries.map(country => (
+          <Card
+            key={country.cca3}
+            data={{
+              ID: country.cca3,
+              Nombre: country.name.common,
+              FlagImage: country.flags.svg,
+              Continente: country.region,
+              Capital: country.capital,
+              Subregion: country.subregion,
+              Area: country.area || 0,
+              Poblacion: country.population || 0
+            }}
+          />
+        ))}
+      </div>
+    );
+  };
+  
 
 export default CardsContainer

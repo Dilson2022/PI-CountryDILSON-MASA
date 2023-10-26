@@ -28,13 +28,28 @@ const searchCountriesByName = async (name) => {
 
 const getCountriesById = async (idPais, source) => {
   let country;
-  if (source === 'api') {
-    const response = await axios.get(`http://localhost:5000/countries/${idPais}`);
-    country = response.data;
-  } else {
-    country = await Country.findByPk(idPais);
+  try {
+    if (source === 'api') {
+      const response = await axios.get(`http://localhost:5000/countries/${idPais}`);
+      country = response.data;
+    } else {
+      country = await Country.findByPk(idPais);
+    }
+
+    if (!country) {
+      console.error("No se encontró ningún país con el ID proporcionado.");
+      return null; // Puedes decidir cómo manejar la ausencia de datos en tu lógica
+    }
+
+    // Asegúrate de que el objeto country contiene los datos necesarios antes de enviarlo
+    console.log("Datos del país recuperados:", country);
+
+    return country;
+  } catch (error) {
+    console.error("Error al obtener datos del país:", error);
+    throw error; // Lanza el error para manejarlo en el bloque catch del llamador
   }
-  return country;
 };
+
 
 module.exports = { getAllCountries, getCountriesById, searchCountriesByName };

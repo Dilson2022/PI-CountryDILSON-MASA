@@ -1,10 +1,10 @@
-import Detail from "./Detail/Detail";
+import CountryDetail from "./Detail/CountryDetail";
 import Form from "./Form/Form";
 import Landing from "./Landing/Landing";
 import Home from "./Home/Home";
 
 export {
-    Detail,
+    CountryDetail,
     Form,
     Landing,
     Home
