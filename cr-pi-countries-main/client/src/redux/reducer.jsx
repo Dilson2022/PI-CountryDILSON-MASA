@@ -3,7 +3,7 @@ import { GET_COUNTRIES, GET_COUNTRY_BY_ID } from "./actions";
 // Estos son los estados globales 
 const initialState = {
     countries: [],
-    selectedCountry: null,
+    selectedCountry: [],
 };
 
 // Reduce recibe el estado que va a modificar,
@@ -16,7 +16,7 @@ const initialState = {
       case GET_COUNTRIES:
         return { ...state, countries: action.payload };
       case GET_COUNTRY_BY_ID:
-        console.log("Datos del país obtenidos:", action.payload);
+       // console.log("Datos del país obtenidos:", action.payload);
         return { ...state, selectedCountry: action.payload };
       default:
         return state;

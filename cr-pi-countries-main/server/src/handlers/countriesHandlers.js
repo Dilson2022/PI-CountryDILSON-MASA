@@ -1,4 +1,8 @@
-const { getAllCountries, getCountriesById, searchCountriesByName } = require("../controllers/countriesControllers");
+const {
+  getAllCountries,
+  getCountriesById,
+  searchCountriesByName,
+} = require("../controllers/countriesControllers");
 
 const getCountryHandlerName = async (req, res) => {
   const { name } = req.query;
@@ -11,20 +15,30 @@ const getCountryHandlerName = async (req, res) => {
     }
     res.status(200).json(countries);
   } catch (error) {
-    console.error('Error al obtener países:', error);
-    res.status(500).json({ error: 'Error al obtener datos de países desde la base de datos.' });
+    console.error("Error al obtener países:", error);
+    res
+      .status(500)
+      .json({
+        error: "Error al obtener datos de países desde la base de datos.",
+      });
   }
 };
 
+// Handler maneja las solicitudes de obtención de países desde la base de datos.
 const getCountriesHandler = async (req, res) => {
   const { name } = req.query;
   try {
-    let countries;
+    let countries; // Almaceno los paises obtenidos de la base de datos
     if (name) {
       countries = await searchCountriesByName(name);
     } else {
       countries = await getAllCountries();
     }
+
+    // Agrega un registro de los datos obtenidos antes de enviar la respuesta
+    console.log("Datos de países obtenidos de la base de datos:", countries);
+
+
     res.status(200).json(countries);
   } catch (error) {
     console.error("Error al obtener países:", error);
@@ -39,13 +53,17 @@ const countriesHandlerByIdFun = async (req, res) => {
     const countries = await getCountriesById(idPais, source);
 
     if (!countries) {
-      return res.status(404).json({ error: "No se encontró ningún país con el ID proporcionado." });
+      return res
+        .status(404)
+        .json({ error: "No se encontró ningún país con el ID proporcionado." });
     }
 
     res.status(200).json(countries);
   } catch (error) {
     console.error("Error en la solicitud:", error);
-    res.status(500).json({ error: "Hubo un problema al procesar tu solicitud." });
+    res
+      .status(500)
+      .json({ error: "Hubo un problema al procesar tu solicitud." });
   }
 };
 

@@ -7,9 +7,9 @@ const allCountry = async () => {
       return {
         ID: e.cca3,
         Nombre: e.name.common,
-        FlagImage: e.flag,
-        Continente: e.continents,
-        Capital: e.capital,
+        FlagImage: e.flags,
+        Continente: e.continents[0],
+        Capital: e.capital[0],
         Subregion: e.subregion,
         Area: e.area,
         Poblacion: e.population

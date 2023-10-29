@@ -7,7 +7,7 @@ export const GET_COUNTRY_BY_ID = "GET_COUNTRY_BY_ID"
 // Este es el action create que retorna una funcion, que hace la peticion y la despacha
 export const getCountries = () => {
     return async function(dispatch) {
-        const apiData = await axios.get("http://localhost:5000/countries")
+        const apiData = await axios.get("http://localhost:3001/countries")
         const countries = apiData.data;
         //console.log("Datos recuperados de la API:", countries);
 
@@ -21,13 +21,13 @@ export const getCountries = () => {
 };
 
 
-export const getCountryById = (idPais) => {
+export const getCountryById = (id) => {
     return async function(dispatch) {
         //console.log("Valor de id antes de la solicitud:", idPais); 
         
-        const apiData = await axios.get(`http://localhost:5000/countries/${idPais}`);
+        const apiData = await axios.get(`http://localhost:3001/countries/${id}`);
         const country = apiData.data;
-        //console.log("Datos recuperados de la API:", country);
+       //console.log("Datos recuperados de la API:", country);
         dispatch({ type: GET_COUNTRY_BY_ID, payload: country });
     };
 };

@@ -8,7 +8,6 @@ function App() {
 
   const countryList = [
     // Aquí iría tu lista de países
-    
   ];
 
   return (
@@ -17,7 +16,7 @@ function App() {
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route path="/home" element={<Home />} />
-        <Route exact path="/detail/:idPais" element={<CountryDetail countries={countryList} />} // Asegúrate de pasar la lista de países al componente CountryDetail
+        <Route exact path="/detail/:id" element={<CountryDetail countries={countryList} />} // Asegúrate de pasar la lista de países al componente CountryDetail
         />
         <Route exact path="/create" element={<Form />} />
       </Routes>

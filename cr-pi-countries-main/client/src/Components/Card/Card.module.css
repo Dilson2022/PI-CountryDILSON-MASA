@@ -7,19 +7,45 @@ justify-content: space-between;
 
 .card {
   flex-basis: 18; /* Ajusta el ancho de cada tarjeta para que haya 5 tarjetas por fila */
-  border: 1px solid #ccc;
+   border: 1px solid #ccc;
   border-radius: 5px;
   margin: 10px;
   text-align: center;
   padding: 10px;
 }
-  
+   
   
 
 .image {
-  max-width: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
-  max-height: 100px; /* Ajusta el tamaño de la imagen según tus necesidades */
+  max-width: 30px; /* Ajusta el tamaño de la imagen según tus necesidades */
+   max-height: 30px; /* Ajusta el tamaño de la imagen según tus necesidades */
+} 
+
+.linkButton {
+  font-family: 'Arial', sans-serif;
+  font-size: 16px;
+  color: #101310;
+  background-color: transparent;
+  border: 2px solid transparent;
+  padding: 10px 20px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 8px;
+  transition: color 0.3s, background-color 0.3s, border-color 0.3s;
 }
+
+.linkButton:hover {
+  color: #ffffff;
+  background-color: #101310;
+  border-color: #1a201a;
+}
+
+
+
+
 
 
 /* .card {
