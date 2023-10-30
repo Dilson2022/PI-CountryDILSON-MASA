@@ -4,13 +4,14 @@ import { Link } from "react-router-dom";
 
 // recibe props como  un objeto llamado data
 const Card = ({ data }) => {
+  //console.log("Data recibida en Card:", data);
   //console.log(data);
-  const { ID, Nombre, flags, Continente } = data;
-  //console.log(FlagImage);
+  const { ID, Nombre, FlagImage, Continente } = data;
+  //console.log("Ruta de la imagen de la bandera:", FlagImage)
   return (
     <div className={styles.card}>
        <img
-        src= {`https://flagcdn.com/${ID}.png`} // Utiliza la ruta de la bandera específica de cada país
+        src={FlagImage} 
         alt={Nombre}
         className={styles.flagImage}
       />
@@ -29,10 +30,7 @@ Card.propTypes = {
   data: PropTypes.shape({
     ID: PropTypes.string,
     Nombre: PropTypes.string,
-    flags: PropTypes.shape({
-      png: PropTypes.string, // Asegúrate de que 'png' sea una cadena que represente la ruta de la bandera
-      svg: PropTypes.string // Puedes agregar 'svg' si también estás utilizando la ruta SVG de la bandera
-    }),
+    FlagImage: PropTypes.string,
     Continente: PropTypes.string,
     Capital: PropTypes.string,
     Subregion: PropTypes.string,
