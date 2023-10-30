@@ -14,7 +14,7 @@ conn.sync({ alter: true }).then(async () => {
     const count = await Country.count();
     if (count <= 0) {
       const countries = await allCountry(); // Asegúrate de que allCountry es una función que devuelve una promesa
-    console.log("Datos de países obtenidos:", countries);
+   // console.log("Datos de países obtenidos:", countries);
     await Country.bulkCreate(countries); // Me inserta los datos en la base de datos
     }
     server.listen(PORT, () => {

@@ -36,6 +36,7 @@ const getCountriesById = async (idPais, source) => {
       const response = await axios.get(
         `http://localhost:5000/countries/${idPais}`
       );
+      console.log("paises obtenidos")
       country = response.data;
     } else {
       country = await Country.findByPk(idPais);

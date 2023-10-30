@@ -15,7 +15,10 @@ module.exports = (sequelize) => {
     },
     FlagImage: {
       type: DataTypes.STRING,
-      allowNull: true
+      allowNull: true,
+      validate:{
+        isUrl: true
+      }
     },
     Continente: {
       type: DataTypes.STRING,

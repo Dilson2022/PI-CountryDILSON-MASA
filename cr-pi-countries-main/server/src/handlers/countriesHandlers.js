@@ -15,7 +15,7 @@ const getCountryHandlerName = async (req, res) => {
     }
     res.status(200).json(countries);
   } catch (error) {
-    console.error("Error al obtener países:", error);
+    //console.error("Error al obtener países:", error);
     res
       .status(500)
       .json({
@@ -36,12 +36,12 @@ const getCountriesHandler = async (req, res) => {
     }
 
     // Agrega un registro de los datos obtenidos antes de enviar la respuesta
-    console.log("Datos de países obtenidos de la base de datos:", countries);
+    //console.log("Datos de países obtenidos de la base de datos:", countries);
 
 
     res.status(200).json(countries);
   } catch (error) {
-    console.error("Error al obtener países:", error);
+    //console.error("Error al obtener países:", error);
     res.status(500).json({ error: "Error al obtener datos de países" });
   }
 };

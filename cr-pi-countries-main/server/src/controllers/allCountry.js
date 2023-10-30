@@ -4,15 +4,16 @@ const allCountry = async () => {
   try {
     const result = await axios.get('http://localhost:5000/countries');
     const filteredData = result.data.map((e) => {
+    
       return {
         ID: e.cca3,
-        Nombre: e.name.common,
-        FlagImage: e.flags,
-        Continente: e.continents[0],
-        Capital: e.capital[0],
+        Nombre: e.name?.common,
+        FlagImage: e.flags?.png,
+        Continente: e.continents?.[0],
+        Capital: e.capital?.[0],
         Subregion: e.subregion,
         Area: e.area,
-        Poblacion: e.population
+        Poblacion: e.population 
       };
     });
     return filteredData;
