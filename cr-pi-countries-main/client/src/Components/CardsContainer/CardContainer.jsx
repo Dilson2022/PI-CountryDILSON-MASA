@@ -2,6 +2,7 @@ import Card from "../Card/Card"
 import styles from"./CardsContainer.module.css"
 import { useSelector } from "react-redux"
 
+
 const CardsContainer = () => {
   const countries = useSelector(state => state.countriesData.countries);
   
@@ -24,6 +25,8 @@ const CardsContainer = () => {
           }}
         />
       ))}
+
+      
     </div>
   );
    }

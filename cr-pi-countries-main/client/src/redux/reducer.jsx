@@ -29,28 +29,28 @@ const initialState = {
 
 
   //REDUCER DE FILTRADOS 
-const initialFilters = {
-  continent: "ALL",
-  activity: "ALL",
-  sortBy:"alphabetical",
-};
-
-const filtersReducer =(state = initialFilters, action) => {
-  switch (action.type) {
-    case SET_CONTINENT_FILTER:
-      return {...state, continent: action.payload};
+  const initialFilters = {
+    continent: "ALL",
+    activity: "ALL",
+    sortBy: "alphabetical", // Corregir la clave a "sortBy"
+  };
+  
+  const filtersReducer = (state = initialFilters, action) => {
+    switch (action.type) {
+      case SET_CONTINENT_FILTER:
+        return { ...state, continent: action.payload };
       case SET_ACTIVITY_FILTER:
-        return {...state, activity: action.payload};
-        case SET_SORT_FILTER:
-          return{...state, sorBy: action.payload};
-          default:
-            return state;
-  }
-};
-
-export default combineReducers ({
- filters: filtersReducer,
-  countriesData: rootReducer,
-}) 
+        return { ...state, activity: action.payload };
+      case SET_SORT_FILTER:
+        return { ...state, sortBy: action.payload }; // Corregir la clave a "sortBy"
+      default:
+        return state;
+    }
+  };
+  
+  export default combineReducers({
+    filters: filtersReducer,
+    countriesData: rootReducer,
+  });
   
   

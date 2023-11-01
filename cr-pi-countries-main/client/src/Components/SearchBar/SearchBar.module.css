@@ -1,0 +1,23 @@
+/* .select-container {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+    margin-bottom: 5px;
+  }
+  
+  select {
+    padding: 8px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+  }
+  
+  option {
+    padding: 8px;
+  }
+  
+  /* Agrega estilos adicionales según sea necesario */

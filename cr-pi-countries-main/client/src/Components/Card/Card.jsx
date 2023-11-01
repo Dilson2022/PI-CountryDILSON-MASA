@@ -22,6 +22,8 @@ const Card = ({ data }) => {
       <Link to={`/detail/${ID}`}>
         <button className={styles.linkButton}> + info</button>
       </Link>
+
+      
     </div>
   );
 };

@@ -3,6 +3,7 @@ import { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { getCountries } from "../../redux/actions";
 //import CountryDetail from "../Detail/CountryDetail";
+import SearchBar from "../../Components/SearchBar/SearchBar"
 
 const Home = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const Home = () => {
 
   return (
     <>
+      <SearchBar/>
       <CardsContainer />
     </>
   );

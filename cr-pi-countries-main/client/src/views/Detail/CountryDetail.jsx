@@ -6,7 +6,7 @@ import { getCountryById } from "../../redux/actions";// Asegúrate de reemplazar
 const CountryDetail = () => {
     const { id} = useParams(); // Asegúrate de que el nombre sea el mismo que el especificado en la ruta
     const dispatch = useDispatch();
-    const selectedCountry = useSelector(state => state.selectedCountry);
+    const selectedCountry = useSelector(state => state.countriesData.selectedCountry);
 
     useEffect(() => {
         //console.log("Valor de idPais antes de la solicitud:", id); // Agrega este registro para verificar el valor de idPais

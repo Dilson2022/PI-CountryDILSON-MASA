@@ -67,10 +67,9 @@ const Form = () => {
           value={form.Paises}
           onChange={changeHandler}
         >
-          <option value="pais1">Pais 1</option>
-          <option value="pais2">Pais 2</option>
-          <option value="pais3">Pais 3</option>
-          {/* Agrega más opciones aquí según tus necesidades */}
+          <option value="pais">Pais </option>
+          
+         
         </select>
       </div>
 
