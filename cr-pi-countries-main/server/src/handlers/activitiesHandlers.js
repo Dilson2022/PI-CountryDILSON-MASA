@@ -1,6 +1,6 @@
 const {createActivity, getActivities}  = require("../controllers/activitiesControllers")
 
-
+// Crea una actividad
 const createActivitiesHandler = async (req, res) => {
     try { 
         const { Nombre, Dificultad, Duración, Temporada} = req.body;
@@ -21,7 +21,7 @@ const createActivitiesHandler = async (req, res) => {
 
 
 
-
+//  Traer las actividades creadas
 const getActivitiesHandlers = async (req, res) =>{
 
     try {
